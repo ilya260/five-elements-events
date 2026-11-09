@@ -1,0 +1,2 @@
+window.peCustomEvent=null;
+try{const id=new URLSearchParams(location.search).get('event');if(id){const events=JSON.parse(localStorage.getItem('pe-event-builder-v1')||'[]');const e=events.find(x=>x.id===id);if(e&&typeof e.title==='string'&&typeof e.description==='string'&&Array.isArray(e.rows)&&e.rows.length&&e.rows.length<=12&&e.rows.every(r=>Array.isArray(r)&&r.length&&r.length<=12&&r.every(s=>s&&['free','occupied','hidden'].includes(s.status)&&Number.isFinite(s.price)&&s.price>=0)))window.peCustomEvent=e;else window.peMissingEvent=true}}catch{window.peMissingEvent=true}
